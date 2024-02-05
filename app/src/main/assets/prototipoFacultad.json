@@ -1,0 +1,56 @@
+{
+    "facultades":[
+        {
+            "nombre": "Facultad de Ingenieria Quimica",
+            "servicios": [
+                "Ingenieria Quimica",
+                "Ingenieria en Bioprocesos"
+            ],
+            "imagenes": "url_imagen1",
+            "descripcion": "Cercano a dos entradas en las calles, edificio blanco con azul, entre dos canchas de basquet",
+            "latitud": -0.200207,
+            "longitud":-78.509893
+        },
+        {
+            "nombre": "Facultad de Medicina Veterinaria y Zootecnia",
+            "servicios": "Medicina Veterinaria y Zootecnia",
+            "imagenes": [
+                "url_imagen1",
+                "url_imagen2"
+            ],
+            "descripcion": "Cercano a la entrada en las calle Gilberto Gato Sobral, edificio blanco verdoso con una cancha de basquet",
+            "latitud": -0.198409,
+            "longitud":-78.506292
+        },
+        {
+            "nombre": "Facultad de Arquitectura y Urbanismo",
+            "servicios": "Arquitectura y Urbanismo",
+            "imagenes": "url_imagen1",
+            "descripcion": "Cercano a la facultad de Ciencias Economicas, edificio con entrada de vidrios y decorado con hierbas",
+            "latitud": -0.200385,
+            "longitud":-78.504496
+        },
+        {
+            "nombre": "Facultad Jurispredencia, Ciencias Politicas y Sociales",
+            "servicios": [
+                "Derecho",
+                "Ciencias Politicas"
+            ],
+            "imagenes": [
+                "url_imagen1",
+                "url_imagen2"
+            ],
+            "descripcion": "Se encuentra en la parte trasera del parqueadero de la FCSH, subiendo gradas con edifico blanco con gris",
+            "latitud": -0.199127,
+            "longitud":-78.502317
+        },
+        {
+            "nombre": "Facultad de Filosofia, Letras y Ciencias de la Educacion de Mecatronica",
+            "servicios": "Pedagogia Tecnica de la Mecatronica",
+            "imagenes": "url_imagen1",
+            "descripcion": "Se encuentra subiendo hacia la derecha del Hospital del Dia y al frente edifico de la carrera de Multilingue",
+            "latitud": -0.199825,
+            "longitud":-78.508213
+        }
+    ]
+}
