@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
-import com.example.ucemap.repository.modelo.Descripcion;
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +47,16 @@ public class FuncionesAdicionales {
         }
 
         return alturaBarraNavegacion;
+    }
+
+    public static List<CarouselItem> convertirAListaCarouselItem(List<String> urls) {
+        List<CarouselItem> listaCarouselItem = new ArrayList<>();
+
+        for (String url : urls) {
+            listaCarouselItem.add(new CarouselItem(url));
+        }
+
+        return listaCarouselItem;
     }
 
 

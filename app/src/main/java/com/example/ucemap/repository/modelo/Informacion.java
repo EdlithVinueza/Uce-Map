@@ -1,19 +1,18 @@
 package com.example.ucemap.repository.modelo;
 
-import com.example.ucemap.repository.modelo.Descripcion;
-import com.example.ucemap.repository.modelo.Posicion;
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
 import java.util.List;
 
 public class Informacion {
     private Posicion posicion;
-    private List<Descripcion>  descripcion;
-    private List<String> imagenes;
+    private List<Descripcion> descripcion;
+    private List<CarouselItem> imagenes;
 
     public Informacion() {
     }
 
-    public Informacion(Posicion posicion, List<Descripcion> descripcion, List<String> imagenes) {
+    public Informacion(Posicion posicion, List<Descripcion> descripcion, List<CarouselItem> imagenes) {
         this.posicion = posicion;
         this.descripcion = descripcion;
         this.imagenes = imagenes;
@@ -35,11 +34,13 @@ public class Informacion {
         this.descripcion = descripcion;
     }
 
-    public List<String> getImagenes() {
+    public List<CarouselItem> getImagenes() {
         return imagenes;
     }
 
-    public void setImagenes(List<String> imagenes) {
+    public void setImagenes(List<CarouselItem> imagenes) {
         this.imagenes = imagenes;
     }
 }
+
+

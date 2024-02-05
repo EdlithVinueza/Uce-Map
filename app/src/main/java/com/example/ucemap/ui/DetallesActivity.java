@@ -25,7 +25,7 @@ public class DetallesActivity extends AppCompatActivity {
     private RecycleViewAdaptadorListaDetalles adaptadorOpciones;
 
     private static List<Descripcion> listaOpciones;
-    private static List<String> listaImagenes;
+    private static List<CarouselItem> listaImagenes;
 
 
 
@@ -76,20 +76,20 @@ public class DetallesActivity extends AppCompatActivity {
         DetallesActivity.listaOpciones = listaDescripciones;
     }
 
-    public static List<String> getListaImagenes() {
+    public static List<CarouselItem> getListaImagenes() {
         return listaImagenes;
     }
 
-    public static void setListaImagenes(List<String> listaImagenes) {
+    public static void setListaImagenes(List<CarouselItem> listaImagenes) {
         DetallesActivity.listaImagenes = listaImagenes;
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MapaActivity.class);
+        Intent intent = new Intent(DetallesActivity.this, MapaActivity.class);
         startActivity(intent);
-        finish();
+
     }
 
 }

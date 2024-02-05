@@ -63,7 +63,7 @@ public class MapaActivity extends AppCompatActivity {
         }
 
 
-        //Solo pueden editar esto, me tocan algo mas y los saco del grupo
+
         //-------------------------------------------------------------------------------------------
         posicion = informacion.getPosicion(); //<--- Posicion
 
@@ -75,22 +75,22 @@ public class MapaActivity extends AppCompatActivity {
         });
 
         //-------------------------------------------------------------------------------------------
+        //Informacion que se debe mandar Layout de detalles
+        DetallesActivity.setListaDescripciones(informacion.getDescripcion());
+        DetallesActivity.setListaImagenes(informacion.getImagenes());
         botonDetalles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MapaActivity.this, DetallesActivity.class);
                 startActivity(intent);
                 finish();
-                //Informacion que se debe mandar Layout de detalles
-                DetallesActivity.setListaDescripciones(informacion.getDescripcion());
-                DetallesActivity.setListaImagenes(informacion.getImagenes());
             }
         });
     }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, ListaOpcionesActivity.class);
+        Intent intent = new Intent(MapaActivity.this, ListaOpcionesActivity.class);
         startActivity(intent);
         finish();
     }

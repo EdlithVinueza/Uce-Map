@@ -10,7 +10,9 @@ import com.example.ucemap.repository.modelo.Informacion;
 import com.example.ucemap.repository.modelo.Posicion;
 import com.example.ucemap.service.EdificioServiceImpl;
 import com.example.ucemap.service.IEdificioService;
+import com.example.ucemap.utilidades.FuncionesAdicionales;
 
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -25,7 +27,8 @@ public class InformacionEdificio implements IInformacionFactory{
         Edificio edificio = iEdificioService.buscarEdificioPorNombre(context,atributoParaExtraer,atributoComparacion);
         Posicion posicion = iEdificioService.generarPosicionEdificio(edificio);
         List<Descripcion> descripcion = iEdificioService.generarDescripcionEdificio(edificio);
-        List<String> imagenes = edificio.getImagenes();
+        List<String> imagenesTmp = edificio.getImagenes();
+        List<CarouselItem> imagenes = FuncionesAdicionales.convertirAListaCarouselItem(imagenesTmp);
         return new Informacion(posicion,descripcion,imagenes);
 
 

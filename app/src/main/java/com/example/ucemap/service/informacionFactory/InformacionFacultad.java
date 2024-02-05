@@ -10,7 +10,9 @@ import com.example.ucemap.repository.modelo.Informacion;
 import com.example.ucemap.repository.modelo.Posicion;
 import com.example.ucemap.service.FacultadServiceImpl;
 import com.example.ucemap.service.IFacultadService;
+import com.example.ucemap.utilidades.FuncionesAdicionales;
 
+import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -25,7 +27,8 @@ public class InformacionFacultad implements IInformacionFactory{
         Facultad facultad = iFacultadService.buscarFacultadPorNombre(context,atributoParaExtraer,atributoComparacion);
         Posicion posicion = iFacultadService.generarPosicionFacultad(facultad);
         List<Descripcion> descripcion = iFacultadService.crearDescripcionFacultad(facultad);
-        List<String> imagenes = facultad.getImagenes();
+        List<String> imagenesTmp = facultad.getImagenes();
+        List<CarouselItem> imagenes = FuncionesAdicionales.convertirAListaCarouselItem(imagenesTmp);
         return new Informacion(posicion,descripcion,imagenes);
     }
 }

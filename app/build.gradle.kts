@@ -52,4 +52,7 @@ dependencies {
     implementation ("me.relex:circleindicator:2.1.6")
     implementation("org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0")
 
+    //Google Map
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
 }
