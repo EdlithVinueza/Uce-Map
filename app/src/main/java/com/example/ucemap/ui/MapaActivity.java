@@ -14,8 +14,7 @@ import com.example.ucemap.repository.modelo.Posicion;
 import com.example.ucemap.service.informacionFactory.IInformacionFactory;
 import com.example.ucemap.repository.modelo.Informacion;
 import com.example.ucemap.service.informacionFactory.InformacionFactory;
-
-
+import com.example.ucemap.service.informacionSingleton.InformacionHolder;
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -25,9 +24,6 @@ public class MapaActivity extends AppCompatActivity {
     private Button botonGenerarCamino;
     private Button botonDetalles;
     private Intent intent;
-    private String nombreEntidadMapa;
-    private String nombreDocumentoInternoParaMapa;
-    private String nombreAtributoParaEvaluarMapa;
     private Informacion informacion;
     private Posicion posicion;
 
@@ -37,47 +33,45 @@ public class MapaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapa);
 
-
-
         botonGenerarCamino = findViewById(R.id.bottonCamino);
         botonDetalles = findViewById(R.id.bottonDetalles);
 
-        //Atributos  obtenidos de RecycleViewAdaptadorListaOpciones
-        nombreEntidadMapa = getIntent().getStringExtra("entidadEscogidaMapa"); //Viene de RecycleViewAdpatador
-        //Atributos inicializados con static de Menu Principal
-        nombreDocumentoInternoParaMapa=MenuPrincipalActivity.nombreDocumentoInterno;
-        nombreAtributoParaEvaluarMapa= MenuPrincipalActivity.atributoParaEvaluar;
+        //Aplicamos el objeto informacionHolder para extraer la informacion que no cambia
+        InformacionHolder informacionHolder = InformacionHolder.obtenerInstancia();
 
-        //Atualizar titulo de Layout dependiendo de la entidad escogida
+        //Actualizar titulo de Layout dependiendo de la entidad escogida
         TextView textTiruloMapa = findViewById(R.id.textTituloMapa);
-        textTiruloMapa.setText(nombreEntidadMapa);
+        textTiruloMapa.setText(InformacionHolder.getNombreEntidadAsociada());
 
-        try {
-            //Aplicacion del Factory, su funcion es que con una sola busqueda se separa la informacion
-            IInformacionFactory iInformacionFactory =  InformacionFactory.contruirInformacion(nombreDocumentoInternoParaMapa);
-            informacion = iInformacionFactory.generarInformacion(this,nombreAtributoParaEvaluarMapa, nombreEntidadMapa);
-        } catch (JSONException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        //Uso de la bandera
+        if (!InformacionHolder.getInformacionInicializada()) {
+            try {
+                //Aplicacion del Factory para crear la informacion
+                IInformacionFactory iInformacionFactory = InformacionFactory.contruirInformacion(InformacionHolder.getTipoEntidadAsociada());
+                informacion = iInformacionFactory.generarInformacion(this, InformacionHolder.getTipoAtributoAsociado(), InformacionHolder.getNombreEntidadAsociada());
+                InformacionHolder.setInformacion(informacion);
+                InformacionHolder.setInformacionInicializada(true);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
-
-
         //-------------------------------------------------------------------------------------------
-        posicion = informacion.getPosicion(); //<--- Posicion
-
+        posicion = InformacionHolder.getInformacion().getPosicion(); //<--- Posicion
+        //-------------------------------------------------------------------------------------------
         botonGenerarCamino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                finish();
 
             }
         });
 
         //-------------------------------------------------------------------------------------------
-        //Informacion que se debe mandar Layout de detalles
-        DetallesActivity.setListaDescripciones(informacion.getDescripcion());
-        DetallesActivity.setListaImagenes(informacion.getImagenes());
         botonDetalles.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +81,7 @@ public class MapaActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

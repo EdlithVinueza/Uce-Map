@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.ucemap.R;
 import com.example.ucemap.data.DatosJason;
 import com.example.ucemap.repository.modelo.ListaOpciones;
+import com.example.ucemap.service.informacionSingleton.InformacionHolder;
 import com.example.ucemap.service.listaOpcionesFactory.IListaOpcionesFactory;
 import com.example.ucemap.service.listaOpcionesFactory.ListaOpcionesFactory;
 import com.example.ucemap.ui.adapters.RecycleViewAdaptadorListaOpciones;
@@ -28,45 +29,30 @@ public class ListaOpcionesActivity extends AppCompatActivity {
     private RecycleViewAdaptadorListaOpciones adaptadorOpciones;
     private List<ListaOpciones> listaOpciones;
 
-    private String tituloLayoutListaOpciones;
-
-    private String nombreArchivoInternoListaOpciones;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_opciones);
 
-
-
-        //Atributos  obtenidos del Menu Principal
-        tituloLayoutListaOpciones = getIntent().getStringExtra("tituloLayoutListaOpciones");
-
-        nombreArchivoInternoListaOpciones = getIntent().getStringExtra("nombreArchivoInternoListaOpciones");
-
-
-
         // Atualizar titulo de Layout dependiendo del documento escogido
         TextView tipoListaOpciones = findViewById(R.id.tipoListaOpciones);
-        tipoListaOpciones.setText(tituloLayoutListaOpciones);
+        tipoListaOpciones.setText(MenuPrincipalActivity.tituloLayout);
 
-        //---------------------------------------------------------------------------------
-
-        recyclerViewListaOpciones = (RecyclerView) findViewById(R.id.recycleOpciones);
-        recyclerViewListaOpciones.setLayoutManager(new LinearLayoutManager(this));
+        //Creamos la lista de Opciones
+        IListaOpcionesFactory iListaOpcionesFactory = ListaOpcionesFactory.generarListaOpciones(InformacionHolder.getTipoEntidadAsociada());
 
         try {
-            cargarListaOpciones();
+            listaOpciones = iListaOpcionesFactory.crearListaOpciones(getApplicationContext());
         } catch (JSONException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        adaptadorOpciones = new RecycleViewAdaptadorListaOpciones(this,listaOpciones);
-
+        //Cargamos el Recycle con el nombre de las entidades escogidas
+        recyclerViewListaOpciones = (RecyclerView) findViewById(R.id.recycleOpciones);
+        recyclerViewListaOpciones.setLayoutManager(new LinearLayoutManager(this));
+        adaptadorOpciones = new RecycleViewAdaptadorListaOpciones(this, listaOpciones);
         recyclerViewListaOpciones.setAdapter(adaptadorOpciones);
 
         recyclerViewListaOpciones.setPadding(
@@ -75,18 +61,17 @@ public class ListaOpcionesActivity extends AppCompatActivity {
                 recyclerViewListaOpciones.getPaddingRight(),
                 MainActivity.alturaBarraNavegacion + getResources().getDimensionPixelSize(R.dimen.margen_inferior_default)
         );
-    }
 
-    public void cargarListaOpciones() throws JSONException, IOException {
-        IListaOpcionesFactory iListaOpcionesFactory = ListaOpcionesFactory.generarListaOpciones(nombreArchivoInternoListaOpciones);
-        listaOpciones=iListaOpcionesFactory.crearListaOpciones(getApplicationContext());
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MenuPrincipalActivity.class);
-        startActivity(intent);
         finish();
+        Intent intent = new Intent(this, MenuPrincipalActivity.class);
+        //Para limpiar e evitar regresar a esta actividad
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+
     }
 }

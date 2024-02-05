@@ -7,7 +7,9 @@
                 "Atencion Medica Diversas Especialidades",
                 "Farmacia"
             ],
-            "imagenes": ["url_imagen1"],
+            "imagenes": [
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
+            ],
             "descripcion": "Parte trasera del edifico Centro de Infomacion Integral, ademas es rojo con blanco",
             "latitud": -0.199490,
             "longitud":-78.505993
@@ -15,7 +17,9 @@
         {
             "nombre": "Vinculacion para la sociedad",
             "servicios": ["Oficinas"],
-            "imagenes": ["url_imagen1"],
+            "imagenes": [
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
+            ],
             "descripcion": "Al frente de unas de las entradas de la Av. Bolivia y cercano a la facultad de comunicacion",
             "latitud": -0.200895,
             "longitud":-78.508225
@@ -23,7 +27,9 @@
         {
             "nombre": "Direccion de Posgrados",
             "servicios": ["Oficinas"],
-            "imagenes": ["url_imagen1"],
+            "imagenes": [
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
+            ],
             "descripcion": "-----",
             "latitud": 0,
             "longitud":0
@@ -38,7 +44,9 @@
                 "Ingenieria Quimica",
                 "Ingenieria en Bioprocesos"
             ],
-            "imagenes": ["url_imagen1"],
+            "imagenes": [
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
+            ],
             "descripcion": "Cercano a dos entradas en las calles, edificio blanco con azul, entre dos canchas de basquet",
             "latitud": -0.200207,
             "longitud":-78.509893
@@ -47,8 +55,7 @@
             "nombre": "Facultad de Medicina Veterinaria y Zootecnia",
             "servicios": ["Medicina Veterinaria y Zootecnia"],
             "imagenes": [
-                "url_imagen1",
-                "url_imagen2"
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
             ],
             "descripcion": "Cercano a la entrada en las calle Gilberto Gato Sobral, edificio blanco verdoso con una cancha de basquet",
             "latitud": -0.198409,
@@ -57,7 +64,9 @@
         {
             "nombre": "Facultad de Arquitectura y Urbanismo",
             "servicios": ["Arquitectura y Urbanismo"],
-            "imagenes": ["url_imagen1"],
+            "imagenes": [
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
+            ],
             "descripcion": "Cercano a la facultad de Ciencias Economicas, edificio con entrada de vidrios y decorado con hierbas",
             "latitud": -0.200385,
             "longitud":-78.504496
@@ -69,8 +78,7 @@
                 "Ciencias Politicas"
             ],
             "imagenes": [
-                "url_imagen1",
-                "url_imagen2"
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
             ],
             "descripcion": "Se encuentra en la parte trasera del parqueadero de la FCSH, subiendo gradas con edifico blanco con gris",
             "latitud": -0.199127,
@@ -79,7 +87,9 @@
         {
             "nombre": "Facultad de Filosofia, Letras y Ciencias de la Educacion de Mecatronica",
             "servicios": ["Pedagogia Tecnica de la Mecatronica"],
-            "imagenes": ["url_imagen1"],
+            "imagenes": [
+                "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?w=1080","https://images.unsplash.com/photo-1534447677768-be436bb09401?w=1080"
+            ],
             "descripcion": "Se encuentra subiendo hacia la derecha del Hospital del Dia y al frente edifico de la carrera de Multilingue",
             "latitud": -0.199825,
             "longitud":-78.508213

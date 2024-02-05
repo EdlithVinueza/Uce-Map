@@ -45,7 +45,7 @@ public class FacultadServiceImpl implements IFacultadService {
     }
     @Override
     public Posicion generarPosicionFacultad(Facultad facultad){
-        return new Posicion(facultad.getNombre(), facultad.getLatitud(), facultad.getLongitud());
+        return new Posicion(facultad.getNombre(),facultad.getLatitud(), facultad.getLongitud());
     }
 
 }

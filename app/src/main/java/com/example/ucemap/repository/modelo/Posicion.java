@@ -5,11 +5,6 @@ public class Posicion {
     private Double latitud;
     private Double longitud;
 
-    public Posicion(Descripcion nombre, Double latitud, Double longitud) {
-        this.latitud = this.latitud;
-        this.longitud = this.longitud;
-    }
-
     public Posicion(String nombre, Double latitud, Double longitud) {
         this.latitud = latitud;
         this.longitud = longitud;

@@ -16,12 +16,12 @@ public class FuncionesAdicionales {
         Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
     }
 
-    public static void enviarNuevoAtributoString(Intent intent, String marcador, String atributo){
+    public static void enviarNuevoAtributoString(Intent intent, String marcador, String atributo) {
         intent.putExtra(marcador, atributo);
     }
 
-    public static void enviarNuevoAtributoInt(Intent intent,String marcador, int nuevoValor){
-        intent.putExtra(marcador,nuevoValor);
+    public static void enviarNuevoAtributoInt(Intent intent, String marcador, int nuevoValor) {
+        intent.putExtra(marcador, nuevoValor);
     }
 
     public static String agregarViñetas(List<String> lista) {
@@ -53,7 +53,7 @@ public class FuncionesAdicionales {
         List<CarouselItem> listaCarouselItem = new ArrayList<>();
 
         for (String url : urls) {
-            listaCarouselItem.add(new CarouselItem(url));
+            listaCarouselItem.add(new CarouselItem((String) url));
         }
 
         return listaCarouselItem;

@@ -9,15 +9,14 @@ import android.content.Intent;
 
 import com.example.ucemap.R;
 import com.example.ucemap.data.DatosJason;
+import com.example.ucemap.service.informacionSingleton.InformacionHolder;
 import com.example.ucemap.utilidades.FuncionesAdicionales;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
     private Button botonFacultad;
     private Button botonEdificio;
     private Intent intent;
-
-    public static String nombreDocumentoInterno;
-    public static String atributoParaEvaluar;
+    public static String tituloLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,43 +30,25 @@ public class MenuPrincipalActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MenuPrincipalActivity.this, ListaOpcionesActivity.class);
-
-                enviarTituloListaOpciones("Escoge una Facultad");
-                enviarNombreArchivoInternoListaOpciones(DatosJason.FACULTAD_NOMBRE_DOCUMENTO_INTERNO);
-                enviarAtributoListaOpciones(DatosJason.ATRIBUTO_GENERAL_NOMBRE);
+                tituloLayout = "Escoge una Facultad";
+                InformacionHolder.setTipoEntidadAsociada(DatosJason.FACULTAD_NOMBRE_DOCUMENTO_INTERNO);
+                InformacionHolder.setTipoAtributoAsociado(DatosJason.ATRIBUTO_GENERAL_NOMBRE);
                 startActivity(intent);
                 finish();
             }
         });
-
 
         botonEdificio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MenuPrincipalActivity.this, ListaOpcionesActivity.class);
-
-                enviarTituloListaOpciones("Escoge un Edificio");
-                enviarNombreArchivoInternoListaOpciones(DatosJason.EDIFICIO_NOMBRE_DOCUMENTO_INTERNO);
-                enviarAtributoListaOpciones(DatosJason.ATRIBUTO_GENERAL_NOMBRE);
+                tituloLayout = "Escoge un Edificio";
+                InformacionHolder.setTipoEntidadAsociada(DatosJason.EDIFICIO_NOMBRE_DOCUMENTO_INTERNO);
+                InformacionHolder.setTipoAtributoAsociado(DatosJason.ATRIBUTO_GENERAL_NOMBRE);
                 startActivity(intent);
                 finish();
             }
         });
-    }
-
-    //Metodos para enviar informacion al activity Lista Opciones
-
-    public void enviarTituloListaOpciones(String nuevoTitulo){
-        FuncionesAdicionales.enviarNuevoAtributoString(intent,"tituloLayoutListaOpciones",nuevoTitulo);
-    }
-    public void enviarNombreArchivoInternoListaOpciones(String opcion){
-        FuncionesAdicionales.enviarNuevoAtributoString(intent,"nombreArchivoInternoListaOpciones",opcion); //Cargo informacion para ListaOpcines
-        FuncionesAdicionales.enviarNuevoAtributoString(intent,"nombreDocumentoInternoMapa",opcion);
-        nombreDocumentoInterno = opcion;
-    }
-    public void enviarAtributoListaOpciones(String atributo){
-        FuncionesAdicionales.enviarNuevoAtributoString(intent,"nombreAtributoListaOpciones",atributo);
-        atributoParaEvaluar = atributo;
     }
 
     @Override
@@ -89,7 +70,5 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         finish();
 
     }
-
-
 
 }

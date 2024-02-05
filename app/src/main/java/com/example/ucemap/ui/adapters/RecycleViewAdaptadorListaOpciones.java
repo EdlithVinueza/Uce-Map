@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ucemap.R;
+import com.example.ucemap.service.informacionSingleton.InformacionHolder;
 import com.example.ucemap.ui.MapaActivity;
 import com.example.ucemap.repository.modelo.ListaOpciones;
 import com.example.ucemap.utilidades.FuncionesAdicionales;
@@ -22,52 +23,54 @@ public class RecycleViewAdaptadorListaOpciones extends RecyclerView.Adapter<Recy
     private OnItemClickListener listener;
     private Intent intent;
     private Context context;
-    public static String elementoEscogidoRecycle;
 
     public interface OnItemClickListener {
         void onItemClick(int position);
     }
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView opcion;
-        public ViewHolder(View itemView){
+
+        public ViewHolder(View itemView) {
             super(itemView);
             opcion = itemView.findViewById(R.id.textOpcion);
         }
     }
 
-    public RecycleViewAdaptadorListaOpciones(Context context, List<ListaOpciones> opciones){
+    public RecycleViewAdaptadorListaOpciones(Context context, List<ListaOpciones> opciones) {
         this.context = context;
         this.listaOpcioneModelos = opciones;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_opcion, parent,false);
-        return  new ViewHolder(view);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_opcion, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        String opcionEscogida = this.listaOpcioneModelos.get(position).getOpcion();
 
+        String opcionEscogida = this.listaOpcioneModelos.get(position).getOpcion();
         holder.opcion.setText(opcionEscogida);
 
-        // Añade el click para cada elemento
+        // Añade el click a cada elemento visto
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
 
                 intent = new Intent(context, MapaActivity.class);
-                elementoEscogidoRecycle = opcionEscogida;
-                enviarNombreEntidad(opcionEscogida);
+                InformacionHolder.setNombreEntidadAsociada(opcionEscogida);
+                InformacionHolder.setInformacionInicializada(false); //bandera
                 context.startActivity(intent);
 
+
             }
+
         });
     }
 
@@ -75,12 +78,5 @@ public class RecycleViewAdaptadorListaOpciones extends RecyclerView.Adapter<Recy
     public int getItemCount() {
         return listaOpcioneModelos.size();
     }
-    public void enviarNombreEntidad(String nuevoTituloMapa){
-        FuncionesAdicionales.enviarNuevoAtributoString(intent,"entidadEscogidaMapa",nuevoTituloMapa);
-    }
 
-
-    }
-
-
-
+}
