@@ -24,14 +24,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_principal);
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        decorView.setSystemUiVisibility(uiOptions);
-
         botonFacultad = findViewById(R.id.bottonFacultad);
         botonEdificio = findViewById(R.id.bottonEdificio);
-
-
 
         botonFacultad.setOnClickListener(new View.OnClickListener() {
             @Override

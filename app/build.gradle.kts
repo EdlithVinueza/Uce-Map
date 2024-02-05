@@ -45,6 +45,11 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
 
-    //Leer Jaso
+    //Leer Jason
     implementation("com.google.code.gson:gson:2.10.1")
+
+    //Para el carrusel de imagenes
+    implementation ("me.relex:circleindicator:2.1.6")
+    implementation("org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:2.1.0")
+
 }

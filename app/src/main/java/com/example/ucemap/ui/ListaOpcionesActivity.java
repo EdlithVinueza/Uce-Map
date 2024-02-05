@@ -39,10 +39,7 @@ public class ListaOpcionesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lista_opciones);
 
-        //Forzar a que aparezca la barra de navegacion
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        decorView.setSystemUiVisibility(uiOptions);
+
 
         //Atributos  obtenidos del Menu Principal
         tituloLayoutListaOpciones = getIntent().getStringExtra("tituloLayoutListaOpciones");
@@ -91,6 +88,5 @@ public class ListaOpcionesActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MenuPrincipalActivity.class);
         startActivity(intent);
         finish();
-
     }
 }

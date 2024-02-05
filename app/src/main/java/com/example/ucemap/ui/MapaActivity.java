@@ -37,9 +37,7 @@ public class MapaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapa);
 
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-        decorView.setSystemUiVisibility(uiOptions);
+
 
         botonGenerarCamino = findViewById(R.id.bottonCamino);
         botonDetalles = findViewById(R.id.bottonDetalles);
@@ -88,7 +86,13 @@ public class MapaActivity extends AppCompatActivity {
                 DetallesActivity.setListaImagenes(informacion.getImagenes());
             }
         });
-
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, ListaOpcionesActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
